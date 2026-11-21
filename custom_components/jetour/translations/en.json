@@ -60,6 +60,21 @@
           "name": "Device name (optional)",
           "scan_interval": "Polling interval (seconds)"
         }
+      },
+      "manual": {
+        "title": "Jetour TSP account and vehicle",
+        "description": "Enter the VIN / userId / appId / access_token captured from the real device.",
+        "data": {
+          "vin": "Vehicle VIN",
+          "user_id": "User ID (e.g. U123456789012345)",
+          "app_id": "appId",
+          "access_token": "access_token",
+          "name": "Device name (optional)",
+          "model_code": "Model code",
+          "pcode": "pcode",
+          "api_base": "Gateway address",
+          "scan_interval": "Polling interval (seconds, MQTT push preferred)"
+        }
       }
     },
     "error": {
@@ -94,6 +109,24 @@
           "enable_http": "HTTP polling (requires JWT)"
         },
         "description": "The HTTPS gateway requires a JWT. The token from SMS login is opaque and unusable there; disable to rely on MQTT push only."
+      }
+    }
+  },
+  "services": {
+    "remote_control": {
+      "name": "Send remote control command",
+      "description": "Send a command code to the vehicle and optionally wait for the MQTT result.",
+      "fields": {
+        "code": {"name": "Command code", "description": "TSP command code, see const.KNOWN_COMMANDS."},
+        "value": {"name": "Command value", "description": "Command parameter value (integer or string)."},
+        "wait_result": {"name": "Wait for result", "description": "Whether to wait for the MQTT execution result (up to 30s)."}
+      }
+    },
+    "query_vehicle_info": {
+      "name": "Query vehicle info",
+      "description": "Query vehicle profile by VIN; the result is also emitted as an event.",
+      "fields": {
+        "vin": {"name": "VIN", "description": "Vehicle identification number; leave blank to query all configured entries."}
       }
     }
   }

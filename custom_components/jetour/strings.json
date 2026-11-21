@@ -111,5 +111,23 @@
         "description": "HTTPS 网关要求 JWT 格式的 token。短信登录拿到的不透明 token 不适用，关闭后仅依赖 MQTT 推送。"
       }
     }
+  },
+  "services": {
+    "remote_control": {
+      "name": "下发远程控制指令",
+      "description": "向车辆下发指令码并可等待 MQTT 回执。",
+      "fields": {
+        "code": {"name": "指令码", "description": "TSP 指令码，见 const.KNOWN_COMMANDS。"},
+        "value": {"name": "指令值", "description": "指令参数值（整型或字符串）。"},
+        "wait_result": {"name": "等待车端回执", "description": "是否等待 MQTT 执行结果（最长 30 秒）。"}
+      }
+    },
+    "query_vehicle_info": {
+      "name": "查询车辆信息",
+      "description": "按 VIN 查询车辆档案，结果同时作为事件发出。",
+      "fields": {
+        "vin": {"name": "VIN", "description": "车辆识别代号，留空则查询所有已配置条目。"}
+      }
+    }
   }
 }
