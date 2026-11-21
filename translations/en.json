@@ -1,0 +1,100 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add Jetour Vehicle",
+        "description": "Choose how to sign in. SMS code login needs no packet capture.",
+        "menu_options": {
+          "sms": "Sign in with SMS code (recommended)",
+          "manual": "Enter TSP credentials manually"
+        }
+      },
+      "mqtt": {
+        "title": "MQTT push connection",
+        "description": "Subscribe down/vehicleInfo and down/rct topics",
+        "data": {
+          "enable_mqtt": "Enable MQTT",
+          "mqtt_host": "MQTT host",
+          "mqtt_port": "MQTT port",
+          "mqtt_tls": "Use TLS",
+          "mqtt_tls_insecure": "Insecure TLS",
+          "mqtt_username": "Username",
+          "mqtt_password": "Password",
+          "mqtt_client_id": "Client ID"
+        }
+      },
+      "crypto": {
+        "title": "Encryption & signing",
+        "description": "AES and sign parameters (leave empty for plaintext / aesKey negotiation)",
+        "data": {
+          "aes_key": "Business AES key (base64/hex)",
+          "aes_fixed_key": "Built-in fixed key K0",
+          "aes_mode": "AES mode",
+          "aes_iv_source": "IV source",
+          "sign_key": "Sign key",
+          "sign_algo": "Sign algorithm",
+          "sign_template": "Sign field template",
+          "headers": "Extra headers (JSON)",
+          "unlock_value": "Unlock command value"
+        }
+      },
+      "sms": {
+        "title": "SMS Verification Login",
+        "description": "Enter the mobile number used by the Jetour app. A code will be sent to your phone.",
+        "data": {
+          "mobile": "Mobile number"
+        }
+      },
+      "code": {
+        "title": "Verification Code",
+        "description": "Enter the code received by SMS.",
+        "data": {
+          "verification_code": "SMS code"
+        }
+      },
+      "select": {
+        "title": "Select Vehicle",
+        "description": "Several vehicles are bound to this account. Choose the one to add; setup completes automatically and connects to the vehicle with no further input.",
+        "data": {
+          "vin": "Vehicle",
+          "name": "Device name (optional)",
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to Jetour TSP, check credentials and gateway",
+      "unknown": "Unknown error, see logs",
+      "invalid_mobile": "Invalid mobile number",
+      "sms_failed": "Could not send the SMS code, please retry",
+      "invalid_code": "Wrong or expired code",
+      "no_vehicles": "No vehicle bound to this account",
+      "unknown_vin": "Invalid vehicle selection"
+    },
+    "abort": {
+      "already_configured": "Vehicle already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Jetour options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)",
+          "access_token": "access_token",
+          "enable_mqtt": "Enable MQTT",
+          "mqtt_host": "MQTT host",
+          "mqtt_port": "MQTT port",
+          "mqtt_tls": "Use TLS",
+          "mqtt_username": "Username",
+          "mqtt_password": "Password",
+          "aes_key": "AES key",
+          "aes_mode": "AES mode",
+          "unlock_value": "Unlock command value",
+          "enable_http": "HTTP polling (requires JWT)"
+        },
+        "description": "The HTTPS gateway requires a JWT. The token from SMS login is opaque and unusable there; disable to rely on MQTT push only."
+      }
+    }
+  }
+}

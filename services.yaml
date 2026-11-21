@@ -1,0 +1,42 @@
+remote_control:
+  name: 下发远程控制指令
+  description: >-
+    直接向车辆下发任意已支持的 TSP 指令码（如 Fortification / POWER_PHEV / FindCar / WindowControl 等），
+    并可等待 MQTT 回执结果。
+  fields:
+    code:
+      name: 指令码
+      description: TSP 指令码，取值见 const.KNOWN_COMMANDS
+      required: true
+      example: Fortification
+      selector:
+        text:
+    value:
+      name: 指令值
+      description: 指令参数值（整型或字符串）
+      required: true
+      example: "1"
+      selector:
+        text:
+    wait_result:
+      name: 等待车端回执
+      description: 是否等待 MQTT 推送的执行结果（最长 30 秒）
+      required: false
+      default: true
+      example: true
+      selector:
+        boolean:
+
+query_vehicle_info:
+  name: 查询车辆信息（按 VIN）
+  description: >-
+    调用车厂档案接口，按 VIN 查询车辆的车型名称、modelCode、车系代码、发动机号、开票信息、经销商等原始档案。
+    不填 vin 时依次查询所有已配置条目的车辆。查询结果同时作为事件 jetour_vehicle_info 发出。
+  fields:
+    vin:
+      name: VIN
+      description: 车辆识别代号（17 位），留空则使用已配置条目的 VIN
+      required: false
+      example: 你的VIN
+      selector:
+        text:

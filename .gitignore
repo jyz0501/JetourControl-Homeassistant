@@ -1,0 +1,35 @@
+# HACS 会把本仓库当作集成直接使用，无需打包资源
+*.zip
+*.tar.gz
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# 本地分析产物，勿随集成发布
+*.apk
+*.dex
+*.har
+jadx-output*/
+output/
+flutter_binaries/
+
+# 本地调试脚本与真实凭据，绝对不能提交
+.local_test/
+*.pem
+*.jks
+*credentials*
+*.rar
+*.7z
+
+# 内部技术分析文档（含服务端漏洞细节）与未加载的占位实现，不随仓库发布
+JWT_CAPTURE.md
+CAR_INFO_API.md
+MEMBER_API.md
+climate.py
+switch.py

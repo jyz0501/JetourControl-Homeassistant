@@ -1,0 +1,115 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "添加捷途汽车",
+        "description": "选择登录方式。推荐使用短信验证码登录，无需抓包。",
+        "menu_options": {
+          "sms": "短信验证码登录（推荐）",
+          "manual": "手动填写 TSP 凭据"
+        }
+      },
+      "sms": {
+        "title": "短信验证码登录",
+        "description": "输入捷途 App 的手机号，点击提交后会收到短信验证码。",
+        "data": {
+          "mobile": "手机号"
+        }
+      },
+      "code": {
+        "title": "输入验证码",
+        "description": "请输入手机收到的验证码。",
+        "data": {
+          "verification_code": "短信验证码"
+        }
+      },
+      "select": {
+        "title": "选择车辆",
+        "description": "该手机号下已绑定的车辆如下，请选择要接入 Home Assistant 的那一辆。选择后将自动完成配置并连接车辆，无需再填写其他参数；需要接入多辆时请重复添加集成。",
+        "data": {
+          "vin": "车辆",
+          "name": "设备名称（可选）",
+          "scan_interval": "状态轮询间隔（秒）"
+        }
+      },
+      "manual": {
+        "title": "捷途 TSP 账号与车辆",
+        "description": "填写真机抓包得到的 VIN / userId / appId / access_token",
+        "data": {
+          "vin": "车辆 VIN",
+          "user_id": "用户 ID（如 U123456789012345）",
+          "app_id": "appId",
+          "access_token": "access_token",
+          "name": "设备名称（可选）",
+          "model_code": "车型代码（modelCode）",
+          "pcode": "pcode",
+          "api_base": "网关地址",
+          "scan_interval": "状态轮询间隔（秒，MQTT 推送优先）"
+        }
+      },
+      "mqtt": {
+        "title": "MQTT 长连接（车辆状态推送）",
+        "description": "订阅车辆状态与控车回执。短信登录时已用车联凭据自动填充，一般无需修改。",
+        "data": {
+          "enable_mqtt": "启用 MQTT",
+          "mqtt_host": "MQTT 主机",
+          "mqtt_port": "MQTT 端口",
+          "mqtt_tls": "使用 TLS",
+          "mqtt_tls_insecure": "忽略证书校验",
+          "mqtt_username": "用户名",
+          "mqtt_password": "密码",
+          "mqtt_client_id": "Client ID（留空自动生成）"
+        }
+      },
+      "crypto": {
+        "title": "加密与签名参数",
+        "description": "业务报文 AES 加密参数与签名规则；留空则尝试明文或 aesKey 协商",
+        "data": {
+          "aes_key": "业务 AES 密钥（base64/hex）",
+          "aes_fixed_key": "内置固定密钥 K0（用于 aesKey 协商）",
+          "aes_mode": "AES 模式",
+          "aes_iv_source": "IV 来源",
+          "sign_key": "签名密钥",
+          "sign_algo": "签名算法",
+          "sign_template": "待签字段拼接模板",
+          "headers": "额外请求头（JSON）",
+          "unlock_value": "解锁指令 value"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法连接捷途 TSP 服务，请检查凭据与网关地址",
+      "unknown": "未知错误，请查看日志",
+      "invalid_mobile": "手机号格式不正确",
+      "sms_failed": "验证码下发失败，请稍后重试",
+      "invalid_code": "验证码错误或已失效",
+      "no_vehicles": "该账号下没有绑定车辆",
+      "unknown_vin": "车辆选择无效"
+    },
+    "abort": {
+      "already_configured": "该车辆已配置"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "捷途汽车选项",
+        "data": {
+          "scan_interval": "轮询间隔（秒）",
+          "access_token": "access_token",
+          "enable_mqtt": "启用 MQTT",
+          "mqtt_host": "MQTT 主机",
+          "mqtt_port": "MQTT 端口",
+          "mqtt_tls": "使用 TLS",
+          "mqtt_username": "用户名",
+          "mqtt_password": "密码",
+          "aes_key": "业务 AES 密钥",
+          "aes_mode": "AES 模式",
+          "unlock_value": "解锁指令 value",
+          "enable_http": "HTTP 主动查询（需要 JWT）"
+        },
+        "description": "HTTPS 网关要求 JWT 格式的 token。短信登录拿到的不透明 token 不适用，关闭后仅依赖 MQTT 推送。"
+      }
+    }
+  }
+}

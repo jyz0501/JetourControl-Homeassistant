@@ -1,0 +1,11 @@
+{
+  "domain": "jetour",
+  "name": "捷途控车",
+  "documentation": "https://github.com/jyz0501/JetourControl-Homeassistant",
+  "dependencies": [],
+  "codeowners": ["@jyz0501"],
+  "config_flow": true,
+  "iot_class": "cloud_push",
+  "version": "1.4.0",
+  "requirements": ["aiohttp>=3.8.0", "cryptography>=41.0.0", "paho-mqtt>=1.6.1"]
+}
