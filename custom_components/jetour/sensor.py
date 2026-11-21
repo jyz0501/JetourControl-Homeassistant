@@ -218,7 +218,7 @@ class JetourPointsSensor(CoordinatorEntity, SensorEntity):
         self._attr_unique_id = f"jetour_points_{description.key}"
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, "account")},
-            name="捷途账号",
+            name="账户积分",
             manufacturer="捷途汽车",
         )
 

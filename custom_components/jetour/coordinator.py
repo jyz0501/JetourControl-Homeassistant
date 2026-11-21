@@ -142,7 +142,7 @@ class JetourPointsCoordinator(DataUpdateCoordinator):
         super().__init__(
             hass,
             _LOGGER,
-            name="Jetour Points",
+            name="账户积分",
             update_interval=timedelta(seconds=interval) if interval else None,
         )
 
