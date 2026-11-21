@@ -1,12 +1,12 @@
 {
   "domain": "jetour",
   "name": "捷途控车",
-  "documentation": "https://github.com/jyz0501/JetourControl-Homeassistant",
-  "issue_tracker": "https://github.com/jyz0501/JetourControl-Homeassistant/issues",
-  "dependencies": [],
   "codeowners": ["@jyz0501"],
   "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/jyz0501/JetourControl-Homeassistant",
   "iot_class": "cloud_push",
-  "version": "1.4.0",
-  "requirements": ["paho-mqtt>=1.6.1"]
+  "issue_tracker": "https://github.com/jyz0501/JetourControl-Homeassistant/issues",
+  "requirements": ["paho-mqtt>=1.6.1"],
+  "version": "1.4.0"
 }
