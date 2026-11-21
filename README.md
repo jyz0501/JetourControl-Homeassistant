@@ -2,7 +2,7 @@
 
 **中文** | [English](README_EN.md)
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/Marketplace-Custom-41BDF5.svg)](https://hacs.xyz)
 [![version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/jyz0501/JetourControl-Homeassistant/releases)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -61,9 +61,11 @@
 
 ## 二、安装
 
-### 方式一：HACS（推荐，自定义仓库）
+### 方式一：Marketplace（原 HACS，推荐，自定义仓库）
 
-1. HACS → 右上角 ⋮ → **Custom repositories**
+> HA 2026.11 起 HACS 已内置为「Marketplace」集成，无需单独安装；旧版本（<2026.11）入口仍为 HACS，操作相同。
+
+1. **设置 → Marketplace** → 右上角 ⋮ → **Custom repositories**（旧版：HACS 面板）
 2. Repository 填写 `https://github.com/jyz0501/JetourControl-Homeassistant`，Category 选 **Integration**
 3. 搜索 **捷途控车** → Download → 重启 Home Assistant
 4. 设置 → 设备与服务 → 添加集成 → 搜索 `捷途`
@@ -75,7 +77,7 @@ cp -r custom_components/jetour <HA配置目录>/custom_components/
 # 重启 Home Assistant → 设置 → 设备与服务 → 添加集成 → 搜索 "捷途"
 ```
 
-> 提示：升级由 HACS 管理，版本取自 `manifest.json` 的 `version` 字段。
+> 提示：升级由 Marketplace（原 HACS）管理，版本取自 `manifest.json` 的 `version` 字段。
 
 ## 三、配置
 
@@ -155,15 +157,15 @@ data:
 - 车辆 12V 低压电池电压过低时（实测 <10.3V），所有远程控制会被车端拒绝（code 1023）。
 - 轮询间隔只是兜底（默认 300s），MQTT 在线时状态为推送更新。
 
-## 七、HACS 仓库准备
+## 七、Marketplace（原 HACS）仓库准备
 
 仓库需满足（本目录已内置 `hacs.json`、`.github/workflows/validate.yaml`）：
 
-1. GitHub 仓库 **Topics** 添加：`home-assistant`、`hacs`、`integration`。
+1. GitHub 仓库 **Topics** 添加：`home-assistant`、`hacs`、`marketplace`、`integration`。
 2. **Description** 填写中文简介，勾选将仓库设为 Public。
-3. `manifest.json` 的 `documentation` 改为真实仓库地址（Release 后也能被 HACS 正常索引）。
+3. `manifest.json` 的 `documentation` 改为真实仓库地址（Release 后也能被 Marketplace 正常索引）。
 4. 每次发版本：更新 `manifest.json` 的 `version` 并 push → `auto-tag` 工作流会按版本号自动创建 Tag（如 `v1.4.0`）和 Release → `release` 工作流随之打包上传 `jetour.zip`。
-5. `hacs.json` 中 `homeassistant` 为最低 HA 版本要求（当前 `2024.6.0`）。
+5. `hacs.json` 中 `homeassistant` 为最低 HA 版本要求（当前 `2024.6.0`）；Marketplace 内置起（2026.11+）入口为「设置 → Marketplace」，配置不变。
 
 ## 八、合规声明
 

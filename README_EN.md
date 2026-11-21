@@ -2,7 +2,7 @@
 
 [中文](README.md) | **English**
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/Marketplace-Custom-41BDF5.svg)](https://hacs.xyz)
 [![version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/jyz0501/JetourControl-Homeassistant/releases)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -62,9 +62,11 @@ Other command families: see `const.KNOWN_COMMANDS` (`WindowControl`, `AirControl
 
 ## 2. Installation
 
-### Option 1: HACS (recommended, custom repository)
+### Option 1: Marketplace (formerly HACS, recommended, custom repository)
 
-1. HACS → top-right ⋮ → **Custom repositories**
+> Since Home Assistant 2026.11, HACS is built in as the **Marketplace** integration (Settings → Marketplace) — nothing to install separately. On older versions (<2026.11) the same steps apply in the HACS panel.
+
+1. **Settings → Marketplace** → top-right ⋮ → **Custom repositories**
 2. Repository: `https://github.com/jyz0501/JetourControl-Homeassistant`, Category: **Integration**
 3. Search **Jetour Control** → Download → restart Home Assistant
 4. Settings → Devices & Services → Add Integration → search `Jetour`
@@ -76,7 +78,7 @@ cp -r custom_components/jetour <HA config dir>/custom_components/
 # Restart Home Assistant → Settings → Devices & Services → Add Integration → search "Jetour"
 ```
 
-> Upgrades are managed by HACS; the version comes from the `version` field in `manifest.json`.
+> Upgrades are managed by the Marketplace (formerly HACS); the version comes from the `version` field in `manifest.json`.
 
 ## 3. Configuration
 
@@ -156,15 +158,15 @@ data:
 - When the 12V battery voltage is too low (measured <10.3V), all remote controls are rejected by the vehicle (code 1023).
 - The polling interval is only a fallback (default 300s); when MQTT is online, status updates via push.
 
-## 7. HACS Repository Preparation
+## 7. Marketplace (formerly HACS) Repository Preparation
 
 Requirements (this directory already includes `hacs.json` and `.github/workflows/validate.yaml`):
 
-1. Add GitHub repository **Topics**: `home-assistant`, `hacs`, `integration`.
+1. Add GitHub repository **Topics**: `home-assistant`, `hacs`, `marketplace`, `integration`.
 2. Fill in a **Description** and set the repository to Public.
-3. Set `documentation` in `manifest.json` to the real repository URL (so HACS can index it after release).
+3. Set `documentation` in `manifest.json` to the real repository URL (so the Marketplace can index it after release).
 4. For each release: update `version` in `manifest.json` and push → the `auto-tag` workflow creates the Tag (e.g. `v1.4.0`) and Release automatically → the `release` workflow then packages and uploads `jetour.zip`.
-5. `homeassistant` in `hacs.json` is the minimum HA version (currently `2024.6.0`).
+5. `homeassistant` in `hacs.json` is the minimum HA version (currently `2024.6.0`); since 2026.11 the entry point is Settings → Marketplace with the same `hacs.json`.
 
 ## 8. Compliance & Disclaimer
 
