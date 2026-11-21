@@ -9,6 +9,7 @@ CONF_USER_ID = "user_id"
 CONF_APP_ID = "app_id"
 CONF_ACCESS_TOKEN = "access_token"
 CONF_MODEL_CODE = "model_code"
+CONF_MODEL_NAME = "model_name"           # productCategoryName 车型名，用作设备显示名
 CONF_PCODE = "pcode"
 
 CONF_API_BASE = "api_base"

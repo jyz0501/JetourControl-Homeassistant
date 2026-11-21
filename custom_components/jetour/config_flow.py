@@ -34,6 +34,7 @@ from .const import (
     CONF_LOGIN_MODE,
     CONF_MOBILE,
     CONF_MODEL_CODE,
+    CONF_MODEL_NAME,
     CONF_MQTT_CLIENT_ID,
     CONF_MQTT_HOST,
     CONF_MQTT_PASSWORD,
@@ -226,6 +227,7 @@ class JetourConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             CONF_SDK_TOKEN: client.sdk_token or "",
             CONF_MOBILE: client.mobile or "",
             CONF_MODEL_CODE: vehicle.get("model_code") or "",
+            CONF_MODEL_NAME: vehicle.get("model") or "",
             CONF_PCODE: "000000",
             CONF_API_BASE: DEFAULT_API_BASE,
             CONF_SCAN_INTERVAL: DEFAULT_SCAN_INTERVAL,
@@ -254,7 +256,12 @@ class JetourConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         data.setdefault(
             CONF_SIGN_TEMPLATE, "appId+apiCode+timestamp+randomstr+body+transationid"
         )
-        title = data.get("name") or data.get(CONF_PLATE) or f"捷途汽车 {data[CONF_VIN][-6:]}"
+        title = (
+            data.get("name")
+            or data.get(CONF_MODEL_NAME)
+            or data.get(CONF_PLATE)
+            or f"捷途汽车 {data[CONF_VIN][-6:]}"
+        )
         return self.async_create_entry(title=title, data=data)
 
     # ---------- 手动填写（保留原方式）----------
@@ -293,7 +300,12 @@ class JetourConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             self._base.update(user_input)
             data = dict(self._base)
-            title = data.get("name") or data.get(CONF_PLATE) or f"捷途汽车 {data[CONF_VIN][-6:]}"
+            title = (
+                data.get("name")
+                or data.get(CONF_MODEL_NAME)
+                or data.get(CONF_PLATE)
+                or f"捷途汽车 {data[CONF_VIN][-6:]}"
+            )
             return self.async_create_entry(title=title, data=data)
         return self.async_show_form(step_id="crypto", data_schema=STEP_CRYPTO_SCHEMA)
 
