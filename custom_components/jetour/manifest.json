@@ -8,5 +8,5 @@
   "config_flow": true,
   "iot_class": "cloud_push",
   "version": "1.4.0",
-  "requirements": ["aiohttp>=3.8.0", "cryptography>=41.0.0", "paho-mqtt>=1.6.1"]
+  "requirements": ["paho-mqtt>=1.6.1"]
 }

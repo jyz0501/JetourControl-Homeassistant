@@ -72,7 +72,7 @@ Other command families: see `const.KNOWN_COMMANDS` (`WindowControl`, `AirControl
 ### Option 2: Manual installation
 
 ```bash
-cp -r <this directory> <HA config dir>/custom_components/jetour
+cp -r custom_components/jetour <HA config dir>/custom_components/
 # Restart Home Assistant → Settings → Devices & Services → Add Integration → search "Jetour"
 ```
 

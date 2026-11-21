@@ -71,7 +71,7 @@
 ### 方式二：手动安装
 
 ```bash
-cp -r <本目录> <HA配置目录>/custom_components/jetour
+cp -r custom_components/jetour <HA配置目录>/custom_components/
 # 重启 Home Assistant → 设置 → 设备与服务 → 添加集成 → 搜索 "捷途"
 ```
 

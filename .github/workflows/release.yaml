@@ -22,7 +22,8 @@ jobs:
 
       - name: Create zip
         run: |
-          zip -r jetour.zip . -x '*.git*' '.github/*' '__pycache__/*' '*.pyc'
+          cd custom_components
+          zip -r ../jetour.zip jetour -x '*__pycache__*' '*.pyc'
 
       - name: Upload release asset
         env:
