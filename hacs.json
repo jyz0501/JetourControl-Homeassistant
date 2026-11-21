@@ -2,6 +2,7 @@
   "name": "捷途控车",
   "render_readme": true,
   "homeassistant": "2024.6.0",
+  "content_in_root": true,
   "zip_release": false,
   "hide_default_branch": false
 }
