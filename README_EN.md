@@ -163,7 +163,7 @@ Requirements (this directory already includes `hacs.json` and `.github/workflows
 1. Add GitHub repository **Topics**: `home-assistant`, `hacs`, `integration`.
 2. Fill in a **Description** and set the repository to Public.
 3. Set `documentation` in `manifest.json` to the real repository URL (so HACS can index it after release).
-4. For each release: update `version` in `manifest.json` → create a Tag (e.g. `v1.4.0`) → GitHub Release automatically triggers packaging and uploads `jetour.zip`.
+4. For each release: update `version` in `manifest.json` and push → the `auto-tag` workflow creates the Tag (e.g. `v1.4.0`) and Release automatically → the `release` workflow then packages and uploads `jetour.zip`.
 5. `homeassistant` in `hacs.json` is the minimum HA version (currently `2024.6.0`).
 
 ## 8. Compliance & Disclaimer

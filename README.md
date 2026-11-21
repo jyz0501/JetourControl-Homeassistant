@@ -162,7 +162,7 @@ data:
 1. GitHub 仓库 **Topics** 添加：`home-assistant`、`hacs`、`integration`。
 2. **Description** 填写中文简介，勾选将仓库设为 Public。
 3. `manifest.json` 的 `documentation` 改为真实仓库地址（Release 后也能被 HACS 正常索引）。
-4. 每次发版本：更新 `manifest.json` 的 `version` → 打 Tag（如 `v1.4.0`）→ GitHub Release 会自动触发打包流程上传 `jetour.zip`。
+4. 每次发版本：更新 `manifest.json` 的 `version` 并 push → `auto-tag` 工作流会按版本号自动创建 Tag（如 `v1.4.0`）和 Release → `release` 工作流随之打包上传 `jetour.zip`。
 5. `hacs.json` 中 `homeassistant` 为最低 HA 版本要求（当前 `2024.6.0`）。
 
 ## 八、合规声明
