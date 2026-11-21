@@ -1,6 +1,7 @@
 {
   "domain": "jetour",
   "name": "捷途控车",
+  "categories": ["vehicles_transport.cars_evs"],
   "codeowners": ["@jyz0501"],
   "config_flow": true,
   "dependencies": [],
